@@ -34,10 +34,6 @@ test_generator = test_datagen.flow_from_directory(
     class_mode='sparse'
 )
 
-# Obtener las clases
-print(train_generator.class_indices)
-print(test_generator.class_indices)
-
 # Crear el modelo CNN
 model = Sequential([
     Conv2D(32, (3, 3), activation='relu', input_shape=(64, 64, 3)),
@@ -66,3 +62,4 @@ ruta_modelo = Path(carpeta_dataset.parent, 'modelo_predictor_sentimientos.keras'
 model.save(ruta_modelo)
 loss, accuracy = model.evaluate(test_generator)
 print(f'Precisión: {accuracy}')
+print('Clases: ',train_generator.class_indices)
