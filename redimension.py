@@ -3,6 +3,7 @@ from pathlib import Path
 from PIL import Image
 import dlib
 import cv2
+import matplotlib.pyplot as plt
 
 detector_caras = dlib.get_frontal_face_detector()
 
@@ -14,6 +15,9 @@ carpeta_imagenes_originales = Path(carpeta_dataset, "original")
 
 # Obtener la lista de los nombres de las carpetas dentro de la carpeta de imágenes originales
 carpetas = [carpeta for carpeta in carpeta_imagenes_originales.iterdir() if carpeta.is_dir()]
+
+# Lista para almacenar las imágenes redimensionadas
+imagenes_redimensionadas = []
 
 # Iterar sobre las carpetas y redimensionar las imágenes pasando 30% de las imagenes originales a una carpeta test y el resto a train
 for carpeta in carpetas:
@@ -60,5 +64,15 @@ for carpeta in carpetas:
         # Guardar la imagen redimensionada en la carpeta de destino
         imagen_redimensionada.save(ruta_destino)
 
+        imagenes_redimensionadas.append(imagen_redimensionada)
+
         # Cerrar la imagen original
         imagen_original.close()
+
+print(f"Se redimensionaron {len(imagenes_redimensionadas)} imágenes")
+# Mostrar las imágenes redimensionadas en una cuadrícula de 5x5
+fig, axs = plt.subplots(5, 5, figsize=(15, 15))
+for i, ax in enumerate(axs.flat):
+    ax.imshow(imagenes_redimensionadas[i])
+    ax.axis("off")
+plt.show()
