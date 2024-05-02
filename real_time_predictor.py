@@ -10,7 +10,7 @@ carpeta_dataset = Path("dataset")
 ruta_modelo = Path(carpeta_dataset.parent, 'modelo_predictor_sentimientos.keras')
 # Cargar el modelo
 model = load_model(ruta_modelo)
-emociones_dict = {0: 'Enojado', 1: 'Feliz', 2: 'Neutro', 3: 'Triste', 4: 'Sorprendido'}
+emociones_dict = {0: 'Enojado', 1: 'Feliz', 2: 'Neutro', 4: 'Triste', 3: 'Sorprendido'}
 
 # Inicializar el detector de caras de dlib
 detector_caras = dlib.get_frontal_face_detector()

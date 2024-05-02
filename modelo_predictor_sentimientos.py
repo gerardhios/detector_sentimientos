@@ -34,6 +34,10 @@ test_generator = test_datagen.flow_from_directory(
     class_mode='sparse'
 )
 
+# Obtener las clases
+print(train_generator.class_indices)
+print(test_generator.class_indices)
+
 # Crear el modelo CNN
 model = Sequential([
     Conv2D(32, (3, 3), activation='relu', input_shape=(64, 64, 3)),
