@@ -175,5 +175,6 @@ pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
 
-data/
+dataset/
+dataset2/
 modelo_predictor_sentimientos2.keras
